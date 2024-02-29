@@ -1,5 +1,17 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+<script>
+export default {
+    data() {
+        return {
+            selectedTab: 'all',
+        };
+    },
+    methods: {
+        //  切換頁面
+        changeTab(tab) {
+            this.selectedTab = tab;
+        },
+    },
+};
 </script>
 
 <template>
@@ -9,16 +21,16 @@ import TheWelcome from '../components/TheWelcome.vue'
             <button type="button" class="h-[30px] w-[80px] bg-slate-300 rounded-md">新增</button>
         </div>
         <div class="btn-all w-11/12 h-[45px] flex border-b-2 border-slate-500 gap-5">
-            <button type="button" class="h-[30px] w-[80px] bg-slate-300 rounded-md">全部</button>
-            <button type="button" class="h-[30px] w-[80px] bg-slate-300 rounded-md">已執行</button>
-            <button type="button" class="h-[30px] w-[80px] bg-slate-300 rounded-md">未執行</button>
+            <button type="button" class="h-[30px] w-[80px] bg-slate-300 rounded-md" :class="{ 'active': selectedTab === 'all' }" @click="changeTab('all')">全部</button>
+            <button type="button" class="h-[30px] w-[80px] bg-slate-300 rounded-md" :class="{ 'active': selectedTab === 'done' }" @click="changeTab('done')">已執行</button>
+            <button type="button" class="h-[30px] w-[80px] bg-slate-300 rounded-md" :class="{ 'active': selectedTab === 'undone' }" @click="changeTab('undone')">未執行</button>
         </div>
         <table class="todo w-11/12 border-b-2 border-slate-500">
             <thead>
                 <tr class="flex place-content-around">
-                    <th class="font-bold">執行</th>
-                    <th class="font-bold">事項</th>
-                    <th class="font-bold">功能</th>
+                    <td class="font-bold">執行</td>
+                    <td class="font-bold">事項</td>
+                    <td class="font-bold">功能</td>
                 </tr>
             </thead>
             <tbody class="data-show w-11/12">
@@ -35,3 +47,10 @@ import TheWelcome from '../components/TheWelcome.vue'
         </table>
     </div>
 </template>
+
+
+<style>
+.active {
+    @apply bg-white text-black;
+}
+</style>
