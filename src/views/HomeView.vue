@@ -15,6 +15,7 @@ export default {
 </script>
 
 <template>
+    helllllo
     <div class="bg-blue-100 w-screen h-screen flex flex-col p-6">
         <div class="add w-[400px] h-[50px]">
             <input type="text" placeholder="填寫新增事項" class=" h-[30px] w-[200px] rounded-md me-5">
