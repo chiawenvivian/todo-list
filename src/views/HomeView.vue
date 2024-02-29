@@ -1,14 +1,26 @@
 <script>
+import { pushScopeId } from 'vue';
+
 export default {
     data() {
         return {
             selectedTab: 'all',
+            arr:[],
+            obj:{
+                msg:'',
+            },
         };
     },
     methods: {
         //  切換頁面
         changeTab(tab) {
             this.selectedTab = tab;
+        },
+        addItem(){
+            this.obj.id = 1;
+        },
+        textInput(){
+            this.msg = '';
         },
     },
 };
@@ -17,8 +29,8 @@ export default {
 <template>
     <div class="bg-blue-100 w-screen h-screen flex flex-col p-6">
         <div class="add w-[400px] h-[50px]">
-            <input type="text" placeholder="填寫新增事項" class=" h-[30px] w-[200px] rounded-md me-5">
-            <button type="button" class="h-[30px] w-[80px] bg-slate-300 rounded-md">新增</button>
+            <input type="text" placeholder="填寫新增事項" class=" h-[30px] w-[200px] rounded-md me-5" @change="textInput()">
+            <button type="button" class="h-[30px] w-[80px] bg-slate-300 rounded-md" @click="addItem()">新增</button>
         </div>
         <div class="btn-all w-11/12 h-[45px] flex border-b-2 border-slate-500 gap-5">
             <button type="button" class="h-[30px] w-[80px] bg-slate-300 rounded-md" :class="{ 'active': selectedTab === 'all' }" @click="changeTab('all')">全部</button>
@@ -41,6 +53,11 @@ export default {
                         <button type="button" class="h-[30px] w-[80px] bg-slate-300 rounded-md me-2">編輯</button>
                         <button type="button" class="h-[30px] w-[80px] bg-slate-300 rounded-md">刪除</button>
                     </td>
+                </tr>
+                <tr class="flex place-content-around">
+                    <td><input type="checkbox"></td>
+                    <td class="font-bold">事項</td>
+                    <td class="font-bold">功能</td>
                 </tr>
             </tbody>
 
